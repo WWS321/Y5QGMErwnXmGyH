@@ -3,7 +3,7 @@ name: Youth
 on:
   workflow_dispatch:
   schedule:
-     - cron: '11 8 * * *'
+     - cron: '*/7 */5 * * *'
   watch:
     types: started
 jobs:
@@ -13,14 +13,12 @@ jobs:
     env:
         YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
         YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY }}
-        YOUTH_REDBODY: ${{ secrets.YOUTH_REDBODY }}
         YOUTH_TIME: ${{ secrets.YOUTH_TIME }}
 
 
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/WWS321/Y5QGMErwnXmGyH.git ~/bbb
+        uses: actions/checkout@v2
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -28,13 +26,12 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
-          cd ~/bbb
           npm install
-      - name: '运行 【Youth】'
+      - name: '运行 【中青看点】'
         if: env.YOUTH_HEADER
         run: |
-          cd ~/bbb
           node youth.js
         env:
+          TZ: Asia/shanghai
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
