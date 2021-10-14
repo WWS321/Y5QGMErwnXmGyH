@@ -1,0 +1,21 @@
+{
+    "name": "Y5QGMErwnXmGyH",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/WWS321/Y5QGMErwnXmGyH.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "crypto-js": "^4.0.0",
+      "got": "^11.7.0",
+      "http-server": "^0.12.3",
+      "tough-cookie": "^4.0.0"
+    }
+  }

@@ -1,0 +1,45 @@
+name: Youth_Read
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '15 */2 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
+        YOUTH_READ: ${{ secrets.YOUTH_READ }}
+        YOUTH_READ2: ${{ secrets.YOUTH_READ2 }}
+        YOUTH_READ3: ${{ secrets.YOUTH_READ3 }}
+        YOUTH_READ4: ${{ secrets.YOUTH_READ4 }}
+        YOUTH_READ5: ${{ secrets.YOUTH_READ5 }}
+        YOUTH_READ6: ${{ secrets.YOUTH_READ6 }}
+        YOUTH_READ7: ${{ secrets.YOUTH_READ7 }}
+        YOUTH_READ8: ${{ secrets.YOUTH_READ8 }}
+        YOUTH_READ9: ${{ secrets.YOUTH_READ9 }}
+        YOUTH_READ10: ${{ secrets.YOUTH_READ10 }}
+        YOUTH_READ11: ${{ secrets.YOUTH_READ11 }}
+
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/WWS321/Y5QGMErwnXmGyH.git ~/bbb
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        if: env.YOUTH_HEADER
+        run: |
+          npm install
+      - name: '运行 【Youth_Read】'
+        if: env.YOUTH_HEADER
+        run: |
+          node youth_read.js
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
