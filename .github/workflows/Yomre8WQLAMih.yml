@@ -28,10 +28,12 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
+          cd ~/bbb
           npm install
       - name: '运行 【Youth】'
         if: env.YOUTH_HEADER
         run: |
+          cd ~/bbb
           node youth.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}

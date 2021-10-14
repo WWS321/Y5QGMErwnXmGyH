@@ -26,10 +26,12 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
+          cd ~/bbb
           npm install
       - name: '运行 【Youth_Gain】'
         if: env.YOUTH_HEADER
         run: |
+          cd ~/bbb
           node youth_gain.js
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
