@@ -105,6 +105,7 @@ if (isGetCookie = typeof $request !== 'undefined') {
                 $.index = i + 1
             };
             myuid = cookie.match(/uid=\d+/);
+            console.log(myuid);
             await userInfo();
             nick = nick ? nick : null;
             $.log(`\n ********** ${nick} 现金: ${cash}元 ********\n`);
