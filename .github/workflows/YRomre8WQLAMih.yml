@@ -1,5 +1,5 @@
 name: Youth_Read
-
+# 每日早9点到晚8点每2小时运行一次
 on:
   workflow_dispatch:
   schedule:
@@ -48,6 +48,7 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ2 }}
+          
       - name: '运行 【中青看点自动阅读3】'
         if: env.YOUTH_READ3
         run: |
@@ -61,6 +62,7 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ4 }}
+
       - name: '运行 【中青看点自动阅读5】'
         if: env.YOUTH_READ5
         run: |
@@ -74,6 +76,7 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ6 }}
+
       - name: '运行 【中青看点自动阅读7】'
         if: env.YOUTH_READ7
         run: |
@@ -87,6 +90,7 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ8 }}
+
       - name: '运行 【中青看点自动阅读9】'
         if: env.YOUTH_READ9
         run: |
@@ -100,6 +104,7 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ10 }}
+
       - name: '运行 【中青看点自动阅读11】'
         if: env.YOUTH_READ11
         run: |
