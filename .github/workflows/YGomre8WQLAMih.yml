@@ -11,28 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER }}
         YOUTH_START: ${{ secrets.YOUTH_START }}
-        YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
+        YOUTH_START2: ${{ secrets.YOUTH_START2 }}
+        # YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
+
+        TZ: Asia/shanghai
 
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/WWS321/Y5QGMErwnXmGyH.git ~/bbb
+        uses: actions/checkout@v1
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
-        if: env.YOUTH_HEADER
         run: |
-          cd ~/bbb
           npm install
-      - name: '运行 【Youth_Gain】'
-        if: env.YOUTH_HEADER
+
+      - name: '运行 【中青看点浏览赚一】'
+        if: env.YOUTH_START
         run: |
-          cd ~/bbb
           node youth_gain.js
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          YOUTH_START: ${{ secrets.YOUTH_START }}
+
+      - name: '运行 【中青看点浏览赚2】'
+        if: env.YOUTH_START2
+        run: |
+          node youth_gain.js
+        env:
+          YOUTH_START: ${{ secrets.YOUTH_START2 }}
