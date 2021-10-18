@@ -13,7 +13,8 @@ jobs:
     env:
         YOUTH_START: ${{ secrets.YOUTH_START }}
         YOUTH_START2: ${{ secrets.YOUTH_START2 }}
-        # YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
+        YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
+        YOUTH_LOOK2: ${{ secrets.YOUTH_LOOK2 }}
 
         TZ: Asia/shanghai
 
@@ -28,16 +29,18 @@ jobs:
         run: |
           npm install
 
-      - name: '运行 【中青看点浏览赚一】'
+      - name: '运行 【中青看点浏览赚&看看赚一】'
         if: env.YOUTH_START
         run: |
           node youth_gain.js
         env:
           YOUTH_START: ${{ secrets.YOUTH_START }}
+          YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
 
-      - name: '运行 【中青看点浏览赚2】'
+      - name: '运行 【中青看点浏览赚&看看赚2】'
         if: env.YOUTH_START2
         run: |
           node youth_gain.js
         env:
           YOUTH_START: ${{ secrets.YOUTH_START2 }}
+          YOUTH_LOOK: ${{ secrets.YOUTH_LOOK2 }}
