@@ -1,0 +1,37 @@
+name: Youth
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '*/7 */2 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_HEADER: ${{ secrets.YOUTH_HEADER_TEST }}
+        YOUTH_ARTBODY: ${{ secrets.YOUTH_ARTBODY_TEST }}
+        YOUTH_TIME: ${{ secrets.YOUTH_TIME_TEST }}
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        if: env.YOUTH_HEADER
+        run: |
+          npm install
+      - name: '运行 【中青看点】'
+        if: env.YOUTH_HEADER
+        run: |
+          node youth.js
+        env:
+          TZ: Asia/shanghai
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
