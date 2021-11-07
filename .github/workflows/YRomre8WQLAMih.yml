@@ -3,7 +3,7 @@ name: Youth_Read
 on:
   workflow_dispatch:
   schedule:
-     - cron: '20 */5 * * *'
+     - cron: '20 */3 * * *'
   watch:
     types: started
 jobs:
@@ -31,6 +31,8 @@ jobs:
         YOUTH_READ17: ${{ secrets.YOUTH_READ17 }}
         YOUTH_READ18: ${{ secrets.YOUTH_READ18 }}
 
+        YOUTH_READ21: ${{ secrets.YOUTH_READ21 }}
+        YOUTH_READ22: ${{ secrets.YOUTH_READ22 }}
         TZ: Asia/shanghai
 
     steps:
@@ -169,3 +171,17 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ18 }}
+
+      - name: '运行 【中青看点自动阅读21】'
+        if: env.YOUTH_READ21
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ21 }}
+          
+      - name: '运行 【中青看点自动阅读22】'
+        if: env.YOUTH_READ22
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ22 }}          
