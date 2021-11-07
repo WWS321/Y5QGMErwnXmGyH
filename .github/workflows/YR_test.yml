@@ -1,4 +1,4 @@
-name: Youth_Read
+name: YR_test
 # 每日早9点到晚8点每2小时运行一次
 on:
   workflow_dispatch:
