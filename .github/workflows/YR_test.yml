@@ -1,0 +1,33 @@
+name: Youth_Read
+# 每日早9点到晚8点每2小时运行一次
+on:
+  workflow_dispatch:
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_READ: ${{ secrets.YOUTH_READ21 }}
+
+        TZ: Asia/shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+
+      - name: '运行 【中青看点自动阅读一】'
+        if: env.YOUTH_READ
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ21 }}
+
