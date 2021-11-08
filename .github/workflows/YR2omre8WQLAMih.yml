@@ -1,0 +1,110 @@
+name: Youth_Read_2
+# 每日早9点到晚8点每2小时运行一次
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '20 */3 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_READ11: ${{ secrets.YOUTH_READ11 }}
+        YOUTH_READ12: ${{ secrets.YOUTH_READ12 }}
+        YOUTH_READ13: ${{ secrets.YOUTH_READ13 }}
+        YOUTH_READ14: ${{ secrets.YOUTH_READ14 }}
+        YOUTH_READ15: ${{ secrets.YOUTH_READ15 }}
+        YOUTH_READ16: ${{ secrets.YOUTH_READ16 }}
+        YOUTH_READ17: ${{ secrets.YOUTH_READ17 }}
+        YOUTH_READ18: ${{ secrets.YOUTH_READ18 }}
+        YOUTH_READ21: ${{ secrets.YOUTH_READ21 }}
+        YOUTH_READ22: ${{ secrets.YOUTH_READ22 }}
+        YOUTH_READ23: ${{ secrets.YOUTH_READ23 }}
+        YOUTH_READ24: ${{ secrets.YOUTH_READ24 }}
+        TZ: Asia/shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+
+      - name: '运行 【中青看点自动阅读11】'
+        if: env.YOUTH_READ11
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ11 }}
+      - name: '运行 【中青看点自动阅读12】'
+        if: env.YOUTH_READ12
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ12 }}
+      - name: '运行 【中青看点自动阅读13】'
+        if: env.YOUTH_READ13
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ13 }}
+      - name: '运行 【中青看点自动阅读14】'
+        if: env.YOUTH_READ14
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ14 }}
+      - name: '运行 【中青看点自动阅读15】'
+        if: env.YOUTH_READ15
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ15 }}
+      - name: '运行 【中青看点自动阅读16】'
+        if: env.YOUTH_READ16
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ16 }}
+      - name: '运行 【中青看点自动阅读17】'
+        if: env.YOUTH_READ17
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ17 }}
+      - name: '运行 【中青看点自动阅读18】'
+        if: env.YOUTH_READ18
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ18 }}
+      - name: '运行 【中青看点自动阅读21】'
+        if: env.YOUTH_READ21
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ21 }}
+      - name: '运行 【中青看点自动阅读22】'
+        if: env.YOUTH_READ22
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ22 }}         
+      - name: '运行 【中青看点自动阅读23】'
+        if: env.YOUTH_READ23
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ23 }}
+      - name: '运行 【中青看点自动阅读24】'
+        if: env.YOUTH_READ24
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ24 }}  
