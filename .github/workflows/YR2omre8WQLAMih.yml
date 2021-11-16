@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        YOUTH_READ11: ${{ secrets.YOUTH_READ11 }}
+
 #         video ↓
         YOUTH_READ12: ${{ secrets.YOUTH_READ12 }}
         YOUTH_READ13: ${{ secrets.YOUTH_READ13 }}
@@ -20,6 +20,8 @@ jobs:
         YOUTH_READ16: ${{ secrets.YOUTH_READ16 }}
         YOUTH_READ17: ${{ secrets.YOUTH_READ17 }}
         YOUTH_READ18: ${{ secrets.YOUTH_READ18 }}
+#         read ↓
+        YOUTH_READ11: ${{ secrets.YOUTH_READ11 }}
         YOUTH_READ21: ${{ secrets.YOUTH_READ21 }}
         YOUTH_READ22: ${{ secrets.YOUTH_READ22 }}
         YOUTH_READ23: ${{ secrets.YOUTH_READ23 }}
