@@ -1,0 +1,72 @@
+name: Youth_Read_176
+# 每日早9点到晚8点每2小时运行一次
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '20 */4 * * *'
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        YOUTH_READ_176: ${{ secrets.YOUTH_READ_176 }}
+        YOUTH_READ_176_CAIJING: ${{ secrets.YOUTH_READ_176_CAIJING }}  
+        YOUTH_READ_176_CHONGWU: ${{ secrets.YOUTH_READ_176_CHONGWU }}
+        
+        YOUTH_READ_176_VIDEO_JIANKANG: ${{ secrets.YOUTH_READ_176_VIDEO_JIANKANG }}  
+        YOUTH_READ_176_VIDEO_MEISHI: ${{ secrets.YOUTH_READ_176_VIDEO_MEISHI }}
+        YOUTH_READ_176_VIDEO_MIAOZHAO: ${{ secrets.YOUTH_READ_176_VIDEO_MIAOZHAO }}  
+        
+        TZ: Asia/shanghai
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+
+      - name: '运行 【中青看点自动阅读_176】'
+        if: env.YOUTH_READ_176
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176 }}
+      - name: '运行 【中青看点自动阅读_176_CAIJING】'
+        if: env.YOUTH_READ_176_CAIJING
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_CAIJING }}
+      - name: '运行 【中青看点自动阅读_176_CHONGWU】'
+        if: env.YOUTH_READ_176_CHONGWU
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_CHONGWU }}
+          
+          
+      - name: '运行 【中青看点自动阅读_176_VIDEO_JIANKANG】'
+        if: env.YOUTH_READ_176_VIDEO_JIANKANG
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_JIANKANG }}
+      - name: '运行 【中青看点自动阅读_176_VIDEO_MEISHI】'
+        if: env.YOUTH_READ_176_VIDEO_MEISHI
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_MEISHI }}
+      - name: '运行 【中青看点自动阅读_176_VIDEO_MIAOZHAO】'
+        if: env.YOUTH_READ_176_VIDEO_MIAOZHAO
+        run: |
+          node youth_read.js
+        env:
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_MIAOZHAO }}
