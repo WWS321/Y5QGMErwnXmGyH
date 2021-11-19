@@ -13,8 +13,6 @@ jobs:
     env:
 
 #         video ↓
-#         YOUTH_READ12: ${{ secrets.YOUTH_READ12 }}
-#         YOUTH_READ13: ${{ secrets.YOUTH_READ13 }}
 # 158
         YOUTH_READ14: ${{ secrets.YOUTH_READ14 }}
         YOUTH_READ15: ${{ secrets.YOUTH_READ15 }}
