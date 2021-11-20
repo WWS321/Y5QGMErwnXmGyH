@@ -51,18 +51,6 @@ jobs:
           node youth_read.js
         env:
           YOUTH_READ: ${{ secrets.YOUTH_READ11 }}
-      - name: '运行 【中青看点自动阅读12】'
-        if: env.YOUTH_READ12
-        run: |
-          node youth_read.js
-        env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ12 }}
-      - name: '运行 【中青看点自动阅读13】'
-        if: env.YOUTH_READ13
-        run: |
-          node youth_read.js
-        env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ13 }}
       - name: '运行 【中青看点自动阅读14】'
         if: env.YOUTH_READ14
         run: |
