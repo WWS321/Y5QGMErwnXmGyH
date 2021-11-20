@@ -15,9 +15,8 @@ jobs:
         YOUTH_READ_176_CAIJING: ${{ secrets.YOUTH_READ_176_CAIJING }}  
         YOUTH_READ_176_CHONGWU: ${{ secrets.YOUTH_READ_176_CHONGWU }}
         
-        YOUTH_READ_176_VIDEO_JIANKANG: ${{ secrets.YOUTH_READ_176_VIDEO_JIANKANG }}  
-        YOUTH_READ_176_VIDEO_MEISHI: ${{ secrets.YOUTH_READ_176_VIDEO_MEISHI }}
-        YOUTH_READ_176_VIDEO_MIAOZHAO: ${{ secrets.YOUTH_READ_176_VIDEO_MIAOZHAO }}  
+        YOUTH_READ_176_VIDEO_1: ${{ secrets.YOUTH_READ_176_VIDEO_1 }}  
+        YOUTH_READ_176_VIDEO_2: ${{ secrets.YOUTH_READ_176_VIDEO_2 }}
         
         TZ: Asia/shanghai
 
@@ -52,21 +51,15 @@ jobs:
           YOUTH_READ: ${{ secrets.YOUTH_READ_176_CHONGWU }}
           
           
-      - name: '运行 【中青看点自动阅读_176_VIDEO_JIANKANG】'
-        if: env.YOUTH_READ_176_VIDEO_JIANKANG
+      - name: '运行 【中青看点自动阅读_176_VIDEO_1】'
+        if: env.YOUTH_READ_176_VIDEO_1
         run: |
           node youth_read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_JIANKANG }}
-      - name: '运行 【中青看点自动阅读_176_VIDEO_MEISHI】'
-        if: env.YOUTH_READ_176_VIDEO_MEISHI
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_1 }}
+      - name: '运行 【中青看点自动阅读_176_VIDEO_2】'
+        if: env.YOUTH_READ_176_VIDEO_2
         run: |
           node youth_read.js
         env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_MEISHI }}
-      - name: '运行 【中青看点自动阅读_176_VIDEO_MIAOZHAO】'
-        if: env.YOUTH_READ_176_VIDEO_MIAOZHAO
-        run: |
-          node youth_read.js
-        env:
-          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_MIAOZHAO }}
+          YOUTH_READ: ${{ secrets.YOUTH_READ_176_VIDEO_2 }}
