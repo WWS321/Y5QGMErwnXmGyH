@@ -3,7 +3,7 @@ name: Youth_Gain
 on:
   workflow_dispatch:
   schedule:
-     - cron: '5 10 * * *'
+     - cron: '5 4 * * *'
   watch:
     types: started
 jobs:
